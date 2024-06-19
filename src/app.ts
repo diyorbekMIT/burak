@@ -3,6 +3,7 @@ import path from "path";
 import routerAdmin  from "./router-admin";
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
+import router from "./router";
 
 
 
@@ -19,5 +20,6 @@ app.set("view engine", "ejs");
 
 
 app.use("/admin",routerAdmin );
+app.use("/", router);
 
 export default app;
