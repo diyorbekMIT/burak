@@ -1,19 +1,16 @@
+const countVowels = (input: string): number => {
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    let count = 0;
 
-
-function findLongestWord(text: string): string {
-    const words: string[] = text.split(" ");
-    
-    let maxAmount = 0;
-    let longestWord = "";
-
-    for (let i = 0; i < words.length; i++) {
-        if (words[i].length > maxAmount) {
-            maxAmount = words[i].length;
-            longestWord = words[i];
+    for (let char of input.toLowerCase()) {
+        if (vowels.includes(char)) {
+            count++;
         }
     }
 
-    return longestWord;
-}
+    return count;
+};
 
-console.log(findLongestWord("I love Uzbekistan"));
+
+const result = countVowels("string");
+console.log(result); 
