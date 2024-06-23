@@ -22,12 +22,13 @@ productController.getAllProducts = async (req: AdminRequest, res: Response) => {
 productController.createNewProduct = async (req: Request, res: Response) => {
     try {
         console.log("createNewProduct")
+        res.send('Done')
 
-        // TODO: Token
     } catch (err) {
         console.log("Error, createNewProduct", err);
         if (err instanceof Errors) res.status(err.code).json(err)
         else res.status(Errors.standard.code).json(Errors.standard)
+
     }
 };
 
