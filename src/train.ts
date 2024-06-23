@@ -1,16 +1,16 @@
-const countVowels = (input: string): number => {
-    const vowels = ['a', 'e', 'i', 'o', 'u'];
-    let count = 0;
+function reverseSentence(sentence: string): string {
+    let words = sentence.split(' ');
 
-    for (let char of input.toLowerCase()) {
-        if (vowels.includes(char)) {
-            count++;
-        }
-    }
+    
+    let reversedWords = words.map(word => {
+        return word.split('').reverse().join('');
+    });
 
-    return count;
-};
+   
+    return reversedWords.join(' ');
+}
 
 
-const result = countVowels("string");
-console.log(result); 
+
+const reversedSentence = reverseSentence("we like coding");
+console.log(reversedSentence);
