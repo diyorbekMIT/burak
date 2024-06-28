@@ -12,7 +12,10 @@ routerAdmin
   .post("/login", restaurantController.processLogin);
 routerAdmin
   .get("/signup", restaurantController.getSignup)
-  .post("/signup", restaurantController.processSignup);
+  .post(
+    "/signup",
+    makeUploader('members').single('memberImage'),
+    restaurantController.processSignup);
 
 routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 
