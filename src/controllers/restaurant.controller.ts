@@ -3,7 +3,9 @@ import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
-import Errors, { Message } from "../libs/Errors";
+import Errors, { HttpCode, Message } from "../libs/Errors";
+
+const memberService = new MemberService();
 
 const restaurantController: T = {};
 
@@ -21,7 +23,7 @@ restaurantController.goHome = (req: Request, res: Response) => {
 restaurantController.getLogin = (req: Request, res: Response) => {
     try {
         console.log("getLogin");
-        res.send("Login Page");
+        res.render("login");
     } catch (err) {
         console.log("Error, getLogin", err);
         res.status(500).send("Error occurred on the Login Page");
@@ -32,7 +34,7 @@ restaurantController.getLogin = (req: Request, res: Response) => {
 restaurantController.getSignup = (req: Request, res: Response) => {
     try {
         console.log("getSignup");
-        res.send("Signup Page");
+        res.render("signup");
     } catch (err) {
         console.log("Error, getSignup", err);
         res.status(500).send("Error occurred on the Signup Page");
@@ -111,6 +113,32 @@ restaurantController.checkAuthSession = async (req: AdminRequest, res: Response)
     }
 };
 
+restaurantController.getUsers = async (req: AdminRequest, res: Response) => {
+    try {
+        console.log("getUsers");
+        const result = await memberService.getUsers();
+        console.log("result: ", result);
+
+        res.render("users", {users: result});
+
+    } catch (err) {
+        console.log("Error, getUsers", err);
+        res.redirect("/admin/login");
+    }
+};
+
+restaurantController.updateChosenUser = async (req: AdminRequest, res: Response) => {
+    try {
+        console.log("updateChosenUser")
+        const result = await memberService.updateChosenUser(req.body);
+        res.status(HttpCode.OK).json({ data: result })
+    } catch (err) {
+        console.log("Error, ProcessLogin", err);
+        if (err instanceof Errors) res.status(err.code).json(err)
+        else res.status(Errors.standard.code).json(Errors.standard)
+    }
+
+};
 restaurantController.verifyRestaurant = (req: AdminRequest, res: Response, next: NextFunction) => {
     if (req.session?.member?.memberType === MemberType.RESTAURANT){
         req.member = req.session.member;

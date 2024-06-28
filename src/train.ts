@@ -1,16 +1,9 @@
-function reverseSentence(sentence: string): string {
-    let words = sentence.split(' ');
-
-    
-    let reversedWords = words.map(word => {
-        return word.split('').reverse().join('');
-    });
-
-   
-    return reversedWords.join(' ');
-}
-
-
-
-const reversedSentence = reverseSentence("we like coding");
-console.log(reversedSentence);
+function palindromCheck(input: string): boolean {
+   if (input.split("").reverse().join("") === input) {
+    return true; 
+   } else {
+    return false;
+   }
+};
+console.log(palindromCheck("dad"));
+console.log(palindromCheck("son"));
