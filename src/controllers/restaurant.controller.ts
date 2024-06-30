@@ -59,7 +59,7 @@ restaurantController.processLogin = async(req: AdminRequest, res: Response) => {
         console.log("Error, processLogin", err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
         res.send(
-            `<script> alert("${message}"); window.location.replace('admin/signup') </script>`
+            `<script> alert("${message}"); window.location.replace('/admin/signup') </script>`
         );
     }
 };
@@ -84,7 +84,7 @@ restaurantController.processSignup = async (req: AdminRequest, res: Response) =>
         console.log("Error, processLogin", err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
         res.send(
-            `<script> alert("${message}"); window.location.replace('admin/signup') </script>`
+            `<script> alert("${message}"); window.location.replace('/admin/signup') </script>`
         );
 	}
 };
@@ -93,7 +93,7 @@ restaurantController.logout = async (req: AdminRequest, res: Response) => {
     try {
         console.log("logout");
         req.session.destroy(function() {
-            res.redirect("/admin");
+            res.redirect("/admin/signup");
         });
     }catch (err) {
         console.log("Error, logout", err);
