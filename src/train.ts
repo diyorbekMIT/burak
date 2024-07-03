@@ -1,11 +1,6 @@
-function calculateSumOfNumbers(input: any[]): Number {
-   let sum = 0;
-   const result = input.map((ele) =>{
-      if (typeof ele === "number") {
-         sum += ele;
-      }
-   });
-   return sum;
-};
+function objectToArray(obj: { [key: string]: any }): [string, any][] {
+   return Object.entries(obj);
+}
 
-console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35]))
+
+console.log(objectToArray({a: 10, b: 20}));  
