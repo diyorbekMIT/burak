@@ -1,6 +1,6 @@
-function objectToArray(obj: { [key: string]: any }): [string, any][] {
-   return Object.entries(obj);
+function hasProperty(obj: { [key: string]: any }, property: string): boolean {
+   return property in obj;
 }
 
 
-console.log(objectToArray({a: 10, b: 20}));  
+console.log(hasProperty({ name: "BMW", model: "M3" }, "model"));
