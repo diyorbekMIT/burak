@@ -1,6 +1,6 @@
-function hasProperty(obj: { [key: string]: any }, property: string): boolean {
-   return property in obj;
+function calculate(expression: string): number {
+   const result = eval(expression);
+   return result;
 }
 
-
-console.log(hasProperty({ name: "BMW", model: "M3" }, "model"));
+console.log(calculate("1 + 3"));  
