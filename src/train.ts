@@ -1,10 +1,5 @@
-function missingNumber(nums: number[]): number {
-   const n = nums.length;
-   const expectedSum = (n * (n + 1)) / 2;
-   const actualSum = nums.reduce((acc, num) => acc + num, 0);
-   return expectedSum - actualSum;
- }
- 
+function sumOdds(n: number): number {
+  return Math.floor((n + 1) / 2);
+}
 
- console.log(missingNumber([3, 0, 1]));
- 
+console.log(sumOdds(9)); 
