@@ -1,5 +1,16 @@
-function sumOdds(n: number): number {
-  return Math.floor((n + 1) / 2);
+function countChars(str: string): { [key: string]: number } {
+  const charCount: { [key: string]: number } = {};
+
+  for (let char of str) {
+      if (charCount[char]) {
+          charCount[char]++;
+      } else {
+          charCount[char] = 1;
+      }
+  }
+
+  return charCount;
 }
 
-console.log(sumOdds(9)); 
+
+console.log(countChars("hello"));
