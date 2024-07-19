@@ -20,6 +20,7 @@ export enum Message {
 	NO_ERROR_NICK = "No member with that member nick",
 	WRONG_PASSWORD = "Wrong Password inserted, please try again",
 	NOT_AUTHONTICATED = "NOT AUTHONTICATED",
+	TOKEN_CREATION_FAILED = "Token creation failed",
 
 }
 

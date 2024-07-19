@@ -4,6 +4,7 @@ import routerAdmin from "./router-admin";
 import router from "./router";
 import morgan from "morgan";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 
 import session from "express-session";
@@ -24,6 +25,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev")); // Ensure MORGAN_FORMAT is defined in your config or use "dev"
+app.use(cookieParser())
+
 
 app.use(session({
     secret: process.env.SESSION_SECRET || 'defaultSecret',
@@ -48,3 +51,4 @@ app.use("/admin", routerAdmin);
 app.use("/", router);
 
 export default app;
+
