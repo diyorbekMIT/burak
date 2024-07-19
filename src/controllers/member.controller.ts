@@ -5,7 +5,7 @@ import { LoginInput, Member, MemberInput } from '../libs/types/member';
 import MemberService from '../models/Member.service';
 import Errors, { HttpCode, Message } from '../libs/Errors';
 import AuthService from '../models/Auth.service';
-import { AUTH_TIMER } from '../libs/config';
+import { AUTH_TIMER} from '../libs/config';
 
 
 const memberService = new MemberService()
@@ -78,6 +78,8 @@ memberController.verifyAuth = async (req: Request, res: Response) => {
        if (!member) throw new Errors(HttpCode.UNAUTHORIZED, Message.NOT_AUTHONTICATED)
        
        console.log("member: ", member);
+       console.log("sekret token: ", process.env.SECRET_TOKEN);
+
        res.status(HttpCode.OK).json({member : member});
     } catch (err) {
         console.log("Error, VerifyAuth", err);
