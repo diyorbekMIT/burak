@@ -22,6 +22,7 @@ const store = new MongoDBStore({
 });
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/uploads",express.static("./uploads"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev")); // Ensure MORGAN_FORMAT is defined in your config or use "dev"
