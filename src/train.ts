@@ -1,11 +1,19 @@
-function chunkArray<T>(array: T[], chunkSize: number): T[][] {
-    const chunks: T[][] = [];
-    for (let i = 0; i < array.length; i += chunkSize) {
-        chunks.push(array.slice(i, i + chunkSize));
+function countOccurrences(obj: any, key: string): number {
+    let count = 0;
+
+    function recurse(obj: any): void {
+        if (typeof obj === 'object' && obj !== null) {
+            for (const k in obj) {
+                if (k === key) {
+                    count++;
+                }
+                recurse(obj[k]);
+            }
+        }
     }
-    return chunks;
+
+    recurse(obj);
+    return count;
 }
 
-
-console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
-
+console.log(countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model'));
