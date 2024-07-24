@@ -81,7 +81,7 @@ class MemberService {
 
     public async updateMember(
         member: Member, 
-        input: MemberInput)
+        input: MemberUpdateInput)
         : Promise<Member> {
            const memberId = shapeIntoMongooseObjectId(member._id);
            const result = await this.memberModel.findOneAndUpdate({_id: memberId}, input, {new: true}).exec();
