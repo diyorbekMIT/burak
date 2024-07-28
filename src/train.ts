@@ -1,6 +1,6 @@
-function sumEvens(numbers: number[]): number {
-    return numbers.filter(num => num % 2 === 0).reduce((acc, num) => acc + num, 0);
+function randomBetween(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 
-console.log(sumEvens([1, 2, 3])); 
+console.log(randomBetween(30, 50)); 
