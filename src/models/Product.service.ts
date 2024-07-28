@@ -121,6 +121,7 @@ class ProductService {
         console.log("result:", result);
         return result;
     }
-}
+};
+
 
 export default ProductService;

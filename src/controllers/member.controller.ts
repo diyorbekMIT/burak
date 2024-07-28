@@ -16,7 +16,6 @@ const memberController: T = {}
 //REACT
 
 
-
 memberController.signup = async (req: Request, res: Response) => {
     try {;
         console.log("Signup")
