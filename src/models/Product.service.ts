@@ -10,6 +10,7 @@ import { ObjectId } from "mongoose";
 import { ViewInput } from "../libs/types/view";
 import { ViewGroup } from "../libs/enums/view.enum";
 import ViewService from "./View.service";
+import { Member } from "../libs/types/member";
 
 class ProductService {
     private readonly productModel;
