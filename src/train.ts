@@ -1,5 +1,15 @@
-function celsiusToFahrenheit(celsius: number): number {
-    return (celsius * 9/5) + 32;
+function changeNumberInArray(indexToChange: number, array: number[], newNumber: number): number[] {
+
+    let newArray = [...array];
+
+
+    if (indexToChange >= 0 && indexToChange < newArray.length) {
+        newArray[indexToChange] = newNumber;
+    }
+
+    return newArray;
 }
 
-console.log(celsiusToFahrenheit(0));  
+
+let result = changeNumberInArray(1, [1, 3, 7, 2], 2);
+console.log(result);  
