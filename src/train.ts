@@ -1,15 +1,9 @@
-function changeNumberInArray(indexToChange: number, array: number[], newNumber: number): number[] {
-
-    let newArray = [...array];
-
-
-    if (indexToChange >= 0 && indexToChange < newArray.length) {
-        newArray[indexToChange] = newNumber;
+function removeDuplicate(input: string): string {
+    let uniqueChars = new Set<string>();
+    for (let char of input) {
+        uniqueChars.add(char);
     }
-
-    return newArray;
+    return Array.from(uniqueChars).join('');
 }
 
-
-let result = changeNumberInArray(1, [1, 3, 7, 2], 2);
-console.log(result);  
+console.log( removeDuplicate('stringg')); 
