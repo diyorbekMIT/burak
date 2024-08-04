@@ -13,6 +13,8 @@ export interface Product {
     productDesc: String;
     productImages: string[];
     productViews: number;
+    createdAt: Date;
+    updatedAt: Date;
 
 }
 

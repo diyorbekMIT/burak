@@ -1,3 +1,4 @@
+import cors from "cors"
 import express from "express";
 import path from "path";
 import routerAdmin from "./router-admin";
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads",express.static("./uploads"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors({ credentials: true, origin: true }))
 app.use(morgan("dev")); // Ensure MORGAN_FORMAT is defined in your config or use "dev"
 app.use(cookieParser())
 
