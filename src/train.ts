@@ -1,9 +1,16 @@
-function removeDuplicate(input: string): string {
-    let uniqueChars = new Set<string>();
-    for (let char of input) {
-        uniqueChars.add(char);
-    }
-    return Array.from(uniqueChars).join('');
-}
+function capitalizeWords(sentence: string): string {
 
-console.log( removeDuplicate('stringg')); 
+    const words = sentence.split(' ');
+
+    const capitalizedWords = words.map(word => {
+        if (word.length > 2) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        } else {
+            return word;
+        }
+    });
+
+    return capitalizedWords.join(' ');
+}
+const result = capitalizeWords('name should be a string');
+console.log(result);  
