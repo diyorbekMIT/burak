@@ -1,17 +1,12 @@
-function findDisappearedNumbers(nums: number[]): number[] {
-    const n = nums.length;
-    const result: number[] = [];
-
-    const numSet = new Set<number>(nums);
-
-    for (let i = 1; i <= n; i++) {
-
-        if (!numSet.has(i)) {
-            result.push(i);
-        }
-    }
-
-    return result;
+function delayHelloWorld(message: string, delay: number): Promise<string> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log(message);
+            resolve(message);
+        }, delay);
+    });
 }
-const nums = [1, 3, 4, 7];
-console.log(findDisappearedNumbers(nums)); 
+
+delayHelloWorld("Hello World", 3000).then((result) => {
+    console.log(`Returned message: ${result}`);
+});
