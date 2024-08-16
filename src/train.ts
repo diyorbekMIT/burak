@@ -1,12 +1,15 @@
-function delayHelloWorld(message: string, delay: number): Promise<string> {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log(message);
-            resolve(message);
-        }, delay);
-    });
+function reduceNestedArray(arr: any[]): number {
+    return arr.reduce((sum: number, current: any) => {
+        if (Array.isArray(current)) {
+            return sum + reduceNestedArray(current); 
+        } else if (typeof current === 'number') {
+            return sum + current;
+        } else {
+            
+            return sum;
+        }
+    }, 0);
 }
 
-delayHelloWorld("Hello World", 3000).then((result) => {
-    console.log(`Returned message: ${result}`);
-});
+const result = reduceNestedArray([1, [1, 2, [4]]]);
+console.log(result);
