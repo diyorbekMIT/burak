@@ -1,15 +1,16 @@
-function reduceNestedArray(arr: any[]): number {
-    return arr.reduce((sum: number, current: any) => {
-        if (Array.isArray(current)) {
-            return sum + reduceNestedArray(current); 
-        } else if (typeof current === 'number') {
-            return sum + current;
-        } else {
-            
-            return sum;
-        }
-    }, 0);
+function printNumbers() {
+  let counter = 0;
+  const intervalId = setInterval(() => {
+    
+    console.log((counter % 5) + 1);
+    counter++;
+  }, 1000); 
+
+
+  setTimeout(() => {
+    clearInterval(intervalId);
+  }, 5000); 
 }
 
-const result = reduceNestedArray([1, [1, 2, [4]]]);
-console.log(result);
+
+printNumbers();
