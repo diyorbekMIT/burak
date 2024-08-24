@@ -1,16 +1,11 @@
-function printNumbers() {
-  let counter = 0;
-  const intervalId = setInterval(() => {
-    
-    console.log((counter % 5) + 1);
-    counter++;
-  }, 1000); 
+function reverseInteger(num: number): number {
 
+  let reversedString = num.toString().split('').reverse().join('');
 
-  setTimeout(() => {
-    clearInterval(intervalId);
-  }, 5000); 
+  let reversedNumber = parseInt(reversedString, 10);
+  
+  return reversedNumber;
 }
 
 
-printNumbers();
+console.log(reverseInteger(123456789)); 
