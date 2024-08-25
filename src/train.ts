@@ -1,11 +1,17 @@
-function reverseInteger(num: number): number {
-
-  let reversedString = num.toString().split('').reverse().join('');
-
-  let reversedNumber = parseInt(reversedString, 10);
+function rotateArray(arr: number[], index: number): number[] {
   
-  return reversedNumber;
+  if (index < 0 || index > arr.length) {
+      throw new Error("Index out of bounds");
+  }
+  
+  
+  const part1 = arr.slice(0, index);
+  const part2 = arr.slice(index);
+  
+  
+  return part2.concat(part1);
 }
 
 
-console.log(reverseInteger(123456789)); 
+const result = rotateArray([1, 2, 3, 4, 5, 6], 3);
+console.log(result); 
