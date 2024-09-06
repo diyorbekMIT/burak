@@ -1,20 +1,19 @@
-function findDuplicates(arr: number[]): number[] {
+function countNumberAndLetters(input: string): { number: number; letter: number } {
   
-  const countMap = new Map<number, number>();
-  const result: number[] = [];
+  let numberCount = 0;
+  let letterCount = 0;
 
-  for (const num of arr) {
-    countMap.set(num, (countMap.get(num) || 0) + 1);
-  }
-
-  for (const [key, value] of countMap) {
-    if (value === 2) {
-      result.push(key);
+  
+  for (const char of input) {
+    if (/[0-9]/.test(char)) {
+      numberCount++;
+    }
+    else if (/[a-zA-Z]/.test(char)) {
+      letterCount++;
     }
   }
-
-  return result;
+  return { number: numberCount, letter: letterCount };
 }
 
-
-console.log(findDuplicates([1, 2, 3,2, 4, 5, 4, 3, 4])); 
+const result = countNumberAndLetters("string152%\\¥");
+console.log(result); 
