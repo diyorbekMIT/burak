@@ -1,14 +1,18 @@
-function firstUniqueCharIndex(s: string): number {
-  const charCount: Map<string, number> = new Map();
+function sumOfUnique(nums: number[]): number {
+  const frequencyMap = new Map<number, number>();
 
-  for (const char of s) {
-    charCount.set(char, (charCount.get(char) || 0) + 1);
-  }
-  for (let i = 0; i < s.length; i++) {
-    if (charCount.get(s[i]) === 1) {
-      return i;
+  
+  nums.forEach(num => {
+    frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+  });
+
+  let sum = 0;
+  frequencyMap.forEach((count, num) => {
+    if (count === 1) {
+      sum += num;
     }
-  }
-  return -1;
+  });
+
+  return sum;
 }
-console.log(firstUniqueCharIndex("stamp")); 
+console.log(sumOfUnique([1, 2, 3, 2])); 
